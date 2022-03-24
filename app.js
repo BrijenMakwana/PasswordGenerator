@@ -6,10 +6,39 @@ const includeSymbolsElement = document.getElementById("includeSymbols");
 const passwordElement = document.getElementById("password");
 const copyElement = document.getElementById("copy");
 const mainForm = document.getElementById("mainForm");
+const upperCaseConditionElement = document.getElementById("upperCaseCondition");
+const numbersConditionElement = document.getElementById("numbersCondition");
+const symbolsConditionElement = document.getElementById("symbolsCondition");
 
 // sync password length
 passwordLengthNumber.addEventListener("input", syncPasswordLentgh);
 passwordLengthRange.addEventListener("input", syncPasswordLentgh);
+
+// sync include and conditions elements
+
+includeUpperCaseElement.addEventListener("change", () => {
+  if (includeUpperCaseElement.checked) {
+    upperCaseConditionElement.disabled = false;
+  } else {
+    upperCaseConditionElement.disabled = true;
+  }
+});
+
+includeNumbersElement.addEventListener("change", () => {
+  if (includeNumbersElement.checked) {
+    numbersConditionElement.disabled = false;
+  } else {
+    numbersConditionElement.disabled = true;
+  }
+});
+
+includeSymbolsElement.addEventListener("change", () => {
+  if (includeSymbolsElement.checked) {
+    symbolsConditionElement.disabled = false;
+  } else {
+    symbolsConditionElement.disabled = true;
+  }
+});
 
 // possible characters
 const UPPERCASE_LETTERS = generateChars(65, 90);
@@ -36,11 +65,19 @@ mainForm.addEventListener("submit", (e) => {
   const includeUpperCase = includeUpperCaseElement.checked;
   const includeNumbers = includeNumbersElement.checked;
   const includeSymbols = includeSymbolsElement.checked;
+
+  const upperCaseCondition = upperCaseConditionElement.value;
+  const numbersCondition = numbersConditionElement.value;
+  const symbolsCondition = symbolsConditionElement.value;
+
   const password = generatePassword(
     passwordLength,
     includeUpperCase,
     includeNumbers,
-    includeSymbols
+    includeSymbols,
+    upperCaseCondition,
+    numbersCondition,
+    symbolsCondition
   );
   passwordElement.innerText = password;
   //   copy password to clipboard
@@ -53,25 +90,47 @@ function generatePassword(
   passwordLength,
   includeUpperCase,
   includeNumbers,
-  includeSymbols
+  includeSymbols,
+  upperCaseCondition,
+  numbersCondition,
+  symbolsCondition
 ) {
   let password = LOWERCASE_LETTERS;
   let generatedPassword = [];
+  let initialPasswordLength = passwordLength;
   if (includeUpperCase) {
     password = password.concat(UPPERCASE_LETTERS);
+    initialPasswordLength -= upperCaseCondition;
+    for (let i = 1; i <= upperCaseCondition; i++) {
+      const randomPosition = Math.floor(
+        Math.random() * UPPERCASE_LETTERS.length
+      );
+      generatedPassword.push(UPPERCASE_LETTERS[randomPosition]);
+    }
   }
   if (includeNumbers) {
     password = password.concat(NUMBERS);
+    initialPasswordLength -= numbersCondition;
+    for (let i = 1; i <= numbersCondition; i++) {
+      const randomPosition = Math.floor(Math.random() * NUMBERS.length);
+      generatedPassword.push(NUMBERS[randomPosition]);
+    }
   }
   if (includeSymbols) {
     password = password.concat(SYMBOLS);
+    initialPasswordLength -= symbolsCondition;
+    for (let i = 1; i <= symbolsCondition; i++) {
+      const randomPosition = Math.floor(Math.random() * SYMBOLS.length);
+      generatedPassword.push(SYMBOLS[randomPosition]);
+    }
   }
 
-  for (let i = 1; i <= passwordLength; i++) {
+  for (let i = 1; i <= initialPasswordLength; i++) {
     const randomPosition = Math.floor(Math.random() * password.length);
     generatedPassword.push(password[randomPosition]);
   }
 
+  generatedPassword.sort(() => 0.5 - Math.random());
   return generatedPassword.join("");
 }
 
