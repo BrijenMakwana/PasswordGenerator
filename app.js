@@ -16,7 +16,9 @@ const UPPERCASE_LETTERS = generateChars(65, 90);
 const LOWERCASE_LETTERS = generateChars(97, 122);
 const NUMBERS = generateChars(48, 57);
 const SYMBOLS = generateChars(33, 47)
-  .concat(generateChars(58, 64))
+  .concat(generateChars(58, 59))
+  .concat(generateChars(61, 61))
+  .concat(generateChars(63, 64))
   .concat(generateChars(91, 96))
   .concat(generateChars(123, 126));
 
