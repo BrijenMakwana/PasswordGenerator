@@ -73,3 +73,13 @@ label{
     background-image: linear-gradient(to right, #ffeda0 , #ffa585);
 }
 
+#copy{
+    margin-top: 10px;
+    padding: 0;
+    color: #495057;
+}
+
+input[type="checkbox"]{
+    background-color: #ffeda0;
+}
+

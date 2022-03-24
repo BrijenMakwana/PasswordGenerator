@@ -10,26 +10,27 @@
 <body>
     <div class="container">
         <h1>Generate a Strong Password</h1>
-        <h3>password</h3>
+        <h3 id="password">password</h3>
         <form class="form" id="mainForm">
             <label for="passwordLengthNumber">Password Length</label>
             <div class="length">
-                <input type="range" min="1" max="50" id="passwordLengthRange" value="7">
-                <input class="numberInput" type="number" min="1" max="50" id="passwordLengthNumber" value="7">
+                <input type="range" min="1" max="50" id="passwordLengthRange" value="10">
+                <input class="numberInput" type="number" min="1" max="50" id="passwordLengthNumber" value="10">
             </div>
             
 
             <label for="includeUpperCase">Include Uppercase</label>
-            <input type="checkbox" id="includeUpperCase">
+            <input type="checkbox" id="includeUpperCase" checked>
 
             <label for="includeNumbers">Include Numbers</label>
-            <input type="checkbox" id="includeNumbers">
+            <input type="checkbox" id="includeNumbers" checked>
 
             <label for="includeSymbols">Include Symbols</label>
-            <input type="checkbox" id="includeSymbols">
+            <input type="checkbox" id="includeSymbols" checked>
 
             <button class="btn" type="submit">Generate Password</button>
         </form>
+        <span id="copy"></span>
     </div>
     <script src="app.js"></script>
 </body>
