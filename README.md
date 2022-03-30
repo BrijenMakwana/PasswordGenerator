@@ -14,7 +14,7 @@ Access this site at [best-password-generator.vercel.app](https://best-password-g
 
 ## About The App
 
-This project will help you to create a strog password that is not easy to crack. It's created with pure HTML and Javascript. You can add inputs like length of the password, whether to include Uppercase, Number or Symbols, you can also specify the rules like minimum Uppercase or Numbers it should have. After that it will generate a strong password according to your inputs and it will be copied to your clipboard automatically.
+This project will help you to create a strong password that is not easy to crack. It's created with pure HTML and Javascript. You can add inputs like length of the password, whether to include Uppercase, Number or Symbols, you can also specify the rules like minimum Uppercase or Numbers it should have. After that it will generate a strong password according to your inputs and it will be copied to your clipboard automatically.
 
 ## Screenshots
 
