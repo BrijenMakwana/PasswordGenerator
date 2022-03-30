@@ -2,7 +2,7 @@
 
 <img src="https://github.com/BrijenMakwana/PasswordGenerator/blob/main/images/icon_PG.png" width="200" height="200" style="border-radius:50px;">
 
-Access this site at [best-password-generator.vercel](https://best-password-generator.vercel)
+Access this site at [best-password-generator.vercel](https://best-password-generator.vercel.app)
 
 ## Table of Content:
 
